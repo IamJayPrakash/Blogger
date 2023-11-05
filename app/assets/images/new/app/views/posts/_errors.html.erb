@@ -1,0 +1,9 @@
+<!-- app/views/posts/_errors.html.erb -->
+
+<% if post.errors.any? %>
+  <ul class="list-group">
+    <% post.errors.full_messages.each do |message| %>
+      <li class="list-group-item list-group-item-danger"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,15 @@
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230910-50871-5dt0ec.rb extconf.rb
+creating Makefile
+
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20230910-50871-b78g1b/bootsnap

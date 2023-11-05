@@ -1,0 +1,107 @@
+<!-- Adjust the path accordingly -->
+
+<p style="color: green"><%= notice %></p>
+<div
+  class="indexview card text-center p-3 mb-2 text-emphasis-info border-info glass2"
+>
+  <div class="container">
+    <div class="card-header jumbotron">
+      <br />
+      <h1>All Posts <i class="fa-thin fa-face-awesome"></i></h1>
+      <br />
+    </div>
+    <br />
+
+    <div id="posts">
+      <% @posts.each do |post| %> <%= render post , post_body: post.body%>
+
+      <div class="container text-center">
+        <b>
+          <p id="countlike_<%= post.id %>">Likes: <%= post.likes_count %></p>
+        </b>
+        <% if (can? :like,Post)  && current_user.role!='nil'  %>
+        <%= button_to "Like This Post", like_post_path(post), id: "like_post_pls_#{post.id}",
+          data: { post_id: post.id, state: 'like' }, method: :put, remote: true,
+          class: "like-button btn btn-dark" %>
+          <%end%>
+        <br>
+      </div>
+
+
+
+      <!-- <% if current_user %>
+            <br>
+            <%= render 'posts/like_count' , post: post %>
+              <%= render 'posts/upvote_link' , post: post %>
+                <% end %> -->
+
+      <p>
+        <%= link_to " Show this post" , post, class:"btn btn-lg btn-outline-info
+        fa-regular fa-eye mybtn" %>
+      </p>
+      <% end %>
+    </div>
+    <br />
+    <div class="pagination justify-content-center gonext">
+      <%= paginate @posts %>
+    </div>
+    <br />
+    <% if(can? :create ,Post)%>
+    <div class="d-grid gap-2">
+      <%= link_to " New post" , new_post_path, class:"btn btn-lg
+      btn-outline-primary fa-solid fa-feather-alt mybtn" %>
+    </div>
+    <%end%>
+  </div>
+  <br />
+
+  <div class="container d-flex d-grid gap-5" ,style="justify-content:right">
+    <a href="#comehere">
+      <button
+        class="btn btn-outline-info btn-lg rounded-pill fa fa-circle-up share-icon"
+      ></button>
+    </a>
+  </div>
+</div>
+
+
+
+<script>
+  $(document).ready(function () {
+  $(document).on("click", "[id^=like_post_pls_]", function (event) {
+    event.preventDefault();
+    var postId = $(this).data("post-id");
+    var button = $(this);
+
+    $.ajax({
+      url: "/posts/" + postId + "/like",
+      type: "post",
+      data: { like_id: true },
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader(
+          "X-CSRF-Token",
+          $('meta[name="csrf-token"]').attr("content")
+        );
+      },
+      success: function (data) {
+        if (button.data("state") === "like") {
+          // Toggle the state to "dislike"
+          button.data("state", "dislike");
+          button.text("Dislike This Post");
+        } else {
+          // Toggle the state back to "like"
+          button.data("state", "like");
+          button.text("Like This Post");
+        }
+        var likesCountId = "countlike_" + postId;
+        $("#" + likesCountId).text("Likes: " + data.likes_count);
+      },
+      error: function (error) {
+        console.log("AJAX request failed");
+        console.log(error);
+      },
+    });
+  });
+});
+
+</script>

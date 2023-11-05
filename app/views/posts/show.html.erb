@@ -1,0 +1,103 @@
+<br />
+<div class="container glass2">
+  <br />
+  <%= render @post %> <% if @post.avatar? %>
+  <div class="container card text-center">
+    <%= image_tag (@post.avatar.url) ,alt: 'Post Image'%>
+  </div>
+  <%end %>
+  <br />
+  <!-- <div class="container text-center">
+    <b> <p id="countlike">Likes: <%= @post.likes_count %></p></b>
+
+    <%= button_to "Like This Post", like_post_path(@post), id: 'like_post_pls',
+    data: { post_id: @post.id, state: 'like' }, method: :put, remote: true,
+    class: "like-button btn btn-dark" %>
+  </div> -->
+
+  <h6 class="text-center">
+    <br />
+    <%= pluralize(@post.comments.distinct.count(:user_id), 'user' ) %> commented
+    on this Post.
+  </h6>
+  <br />
+
+  <br />
+  <div class="text-center">
+    <% if current_user && (can? :edit ,@post)%> <%= link_to " Edit this post" ,
+    edit_post_path(@post) , class:"btn btn-lg btn-outline-dark fa-regular
+    fa-pen-to-square"%> | <%end%> <%= link_to " Back to posts" , posts_path ,
+    class:"btn btn-lg btn-outline-warning fa-solid fa-backward" %>
+    <br />
+    <br />
+  </div>
+</div>
+<br />
+<h1 class="text-center" ,style="text-color:white"><b> ✉ Comments</b></h1>
+<div class="container glass2">
+  <br />
+  <% if current_user%> <%= render 'comments/form' , post: @post,comment:
+  @post.comments.build ,submit_label: "Reply" %> <%end%>
+  <br />
+
+  <% if @comments.any? %> <% @comments.order(created_at: :desc).first(5).each do
+  |comment| %> <%= render 'comments/comment', post: @post, comment: comment %>
+  <% end %>
+  <div class="pagination justify-content-center"><%= paginate @comments %></div>
+  <% else %>
+  <p>No comments yet.</p>
+  <!-- <p> <a href="".style="text-decoration:none;">SignUp</a> Now & Do comments..!</p> -->
+  <% end %>
+</div>
+<br /><br />
+<div class="contaier justify-content-right">
+  <div class="container d-flex d-grid gap-5" ,style="justify-content:right">
+    <a href="#comehere">
+      <button
+        class="btn btn-outline-primary share-icon btn-lg rounded-pill fa fa-circle-up"
+      ></button>
+    </a>
+  </div>
+</div>
+
+<!-- ajax implementation -->
+<!-- 
+<script>
+  $(document).ready(function () {
+    $(document).on("click", "#like_post_pls", function (event) {
+      event.preventDefault();
+      var postId = $(this).data("post-id");
+      var button = $(this);
+
+      $.ajax({
+        url: "/posts/" + postId + "/like",
+        type: "post",
+        data: { like_id: true },
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader(
+            "X-CSRF-Token",
+            $('meta[name="csrf-token"]').attr("content")
+          );
+        },
+        success: function (data) {
+          if (button.data("state") === "like") {
+            // Toggle the state to "dislike"
+            button.data("state", "dislike");
+            button.text("Dislike This Post");
+          } else {
+            // Toggle the state back to "like"
+            button.data("state", "like");
+            button.text("Like This Post");
+          }
+
+          console.log("AJAX request succeeded");
+          $("#countlike").text("Likes: " + data.likes_count);
+        },
+        error: function (error) {
+          console.log("AJAX request failed");
+          console.log(error);
+        },
+      });
+    });
+  });
+</script> -->

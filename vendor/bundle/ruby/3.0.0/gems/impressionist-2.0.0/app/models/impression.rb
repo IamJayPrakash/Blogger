@@ -1,0 +1,2 @@
+class Impression
+end

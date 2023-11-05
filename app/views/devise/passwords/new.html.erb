@@ -1,0 +1,24 @@
+<div class=" makeme card text-center p-3 mb-2  text-emphasis-info border-warning">
+<div class="container">
+
+<h2> <i class="fa-solid fa-key fa-xl" style="color: #3cc8c6;"></i> Forgot your password?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+   <br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"Email-ID*" %>
+  </div>
+  <br>
+<br>
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions" ,class: "btn btn-outline-info btn-lg"%>
+  </div>
+<% end %>
+<br>
+<br>
+<hr>
+<%= render "devise/shared/links" %>
+</div>
+</div>

@@ -1,0 +1,64 @@
+<div class="container glass1">
+  <!-- <div class="container">
+    <% if current_user.confirmed? %>
+     <button class="btn">   <p style="Color:green"> ✔ Confirmed Account</p></button>
+    <%else%>
+    <button class="btn btn-danger"><p style="Color:red"> ❗ Not Confirmed</p></button>
+    <%end%>
+    </div> -->
+<div class="container">
+  <br />
+  <% if current_user.userimage.present? %>
+  <div class="text-center" >
+    <%= image_tag (current_user.userimage.url) ,alt: 'User Image' ,class:"
+    img-thumbnail img-fluid",style:"height:300px;width:300px;
+    border-radius:100%"%>
+    <p>
+      <em><b>Profile Image</b></em>
+    </p>
+  </div>
+  <% else %>
+  <div class="text-center ">
+    <%= image_tag "default_image.jpg" ,class:" img-thumbnail
+    img-fluid",style:"height:300px;width:300px; border-radius:100%"%>
+    <p>
+      <em><b>Default Profile Image</b></em>
+    </p>
+  </div>
+  <%end%>
+</div>
+<div class="container">
+  <div class="card border-info">
+    <div class="card-header text-center border-info">
+      <h3>Account Information</h3>
+    </div>
+
+    <div class="card-body">
+      <h4><b>User Name:</b> <%=current_user.name%></h4>
+      <h4><b>Email:</b> <%= current_user.email %></h4>
+      <h4><b>Role: </b><%=current_user.role%></h4>
+
+      <h5><b>Account created at: </b><%=current_user.created_at%></h5>
+      <div class="container card">
+        <br />
+        <p><b>Stripe customer id: </b><%= current_user.stripe_customer_id %></p>
+        <p><b>Plan: </b><%=current_user.plan%></p>
+
+        <p>
+          <b>Subscription Status: </b> <%= current_user.subscription_status%>
+        </p>
+        <p>
+          <b>Subscription Ends at: </b> <%= current_user.subscription_ends_at%>
+        </p>
+      </div>
+    </div>
+    <div class="container text-center">
+      <%= button_to ' Go to Billing Portal', stripe_billing_portal_path,class: "
+      btn btn-dark fa-regular ",data:{turbo:'false'} %> <br />
+      <%= link_to " Edit Account" ,edit_user_registration_path ,class:"btn
+      btn-outline-dark fa-solid fa-user-pen" %> <br /><br />
+    </div>
+  </div>
+</div>
+<br>
+</div>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jp blog Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <%= csrf_meta_tags %> <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- bootstrap -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> <%=
+    javascript_importmap_tags %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+    <script
+      src="https://kit.fontawesome.com/33c005a0aa.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <meta name="csrf-token" content="<%= form_authenticity_token %>">
+    
+    <style>
+      .makeme {
+        max-width: 50rem;
+        text-align: center;
+        font-align: center;
+        justify-content: center;
+        padding: 80px;
+        //margin: 200px;
+        margin-left: 450px;
+        margin-top: 100px;
+      }
+      .indexview {
+        max-width: 80rem;
+        text-align: center;
+        font-align: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 200px;
+        // margin-left: 700px;
+        margin-top: 100px;
+      }
+      .madeby {
+        text-align: right;
+     
+       
+      }
+      ::placeholder {
+        color: black;
+      }
+      .glass4 {
+        background: rgba(33, 154, 211, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(9.5px);
+        -webkit-backdrop-filter: blur(9.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .glass3 {
+        background: rgba(237, 245, 243, 0.55);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(9.5px);
+        -webkit-backdrop-filter: blur(9.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .glass2 {
+        background: white;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(9.5px);
+        -webkit-backdrop-filter: blur(199.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .glass1 {
+        background: rgba(207, 222, 234, 0.45);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(11px);
+        -webkit-backdrop-filter: blur(11px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .heart {
+        transform: scale(1);
+        text-align: right;
+        margin-right: 50px;
+
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      .heart > a {
+        text-decoration: none;
+        color: rgb(48, 19, 193);
+      }
+      .heart:hover {
+        transform: scale(1.009);
+        color: rgb(2, 130, 87);
+      }
+
+      body {
+        background: linear-gradient(
+          -80deg,
+          #d662ae,
+          #70b2fefe,
+          #acd9e9,
+          #e3fff8,
+          #ffffff,
+          rgb(174, 255, 251),
+          rgb(4, 188, 255), 
+          rgb(0, 132, 255)
+          
+        
+        );
+        background-size: 400% 400%;
+        animation: gradient 5s ease-in-out infinite;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+/* footer section  */
+
+      #footer{
+    background-color: #fff;
+    text-align: center;
+    padding:1% 15%;
+}
+.share-icon{
+    padding:1%;
+    margin: 3px 10px;
+    font-size: 2rem;
+    color:black;
+}
+.share-icon:hover
+{transform: scale(1.3);
+  color: rgb(122, 32, 155);
+  
+}
+.gonext:hover
+{
+  transform: scale(1.02);
+  border-inline-color: black;
+  font-weight: 600;
+letter-spacing: 3px;
+
+}
+.btn{
+}
+.btn:hover {
+  background: #fff;
+  /* font-color:#000; */
+  box-shadow: 0px 2px 10px 5px #1abc7e;
+  color: #000;
+ 
+  letter-spacing: 3px;  
+}
+
+.mybtn {
+  /* text-align: center; */
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 20px;
+  letter-spacing: 4px;
+  position: relative;
+  background-color: #16a085;
+  border: none;
+  color: #fff;
+  padding: 20px;
+  /* width: 200px; */
+  text-align: center;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  box-shadow: 0 5px 15px #193047;
+  border-radius: 4px;
+}
+
+.mybtn:hover {
+  background: #fff;
+  box-shadow: 0px 2px 10px 5px #1abc9c;
+  color: #000;
+}
+
+.mybtn:after {
+  content: "";
+  background: #1abc9c;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.mybtn:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+.mybtn:focus { outline:0; }
+
+.bogl1
+{
+  font-weight: 600;
+  font-size: 2.5rem;
+  padding-right: 20px;
+  /* animation: shine 2s forwards, blink 3s 2s infinite; */
+
+}
+/* 
+@keyframes shine {
+  0% {
+    color: #00f2ff;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #6598ff,
+      -0.2rem 0.1rem 1rem #03352a, 0.2rem 0.1rem 1rem #65ffde,
+      0 -0.5rem 2rem #48ddc5, 0 0.5rem 3rem #24ffcc;
+  }
+}
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #65ffb2,
+      -0.2rem 0.1rem 1rem #0d0720, 0.2rem 0.1rem 1rem #65b2ff,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #9924ff;
+  }
+  28%,
+  33% {
+    color: #65ff89;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #2462ff;
+    text-shadow: none;
+  }
+} */
+
+.bogl
+{
+  letter-spacing: 5px;
+  font-weight: 500;
+
+  
+}
+    </style>
+  </head>
+
+  <body style="background-color: rgb(255, 255, 255)">
+    <header>
+      <%= render 'layouts/navbar' %> <%= render 'layouts/alerts'%>
+    </header>
+
+    <main><%= yield %></main>
+    <br>
+
+    <!-- Footer -->
+    <br><br><br><br><br><br>
+    <footer id="footer">
+
+    <%= image_tag 'ksolveslogo.png',height:80%>
+     <a href="https://twitter.com/_Ksolves" target="_blank"> <i class=" share-icon  fa-brands fa-square-twitter"></i></a>
+     <a href="https://www.facebook.com/Ksolves" target="_blank"> <i class=" share-icon  fa-brands fa-facebook"></i></a>
+     <a href="https://www.instagram.com/_ksolves" target="_blank"> <i class=" share-icon fa-brands fa-square-instagram"></i></a>
+      <a href="https://www.ksolves.com/" target="_blank"> <i class=" share-icon fa-solid fa-globe"></a></i>
+      <a href="https://www.linkedin.com/company/ksolves" target="_blank"> <i class=" share-icon fa-brands fa-linkedin"></a></i>
+      <a href="https://www.youtube.com/channel/UCplv9V47g9VidekGN6Wp1ew" target="_blank"> <i class=" share-icon fa-brands fa-square-youtube"></a></i>
+      <a href="https://in.pinterest.com/ksolvesindialimited" target="_blank"> <i class=" share-icon fa-brands fa-pinterest"></a></i>
+<br>
+      <p>© Copyright Ksolves India Limited</p>
+      <!-- <p class="madeby">Made by : Jay Prakash 😊</p> -->
+
+      
+  </footer>
+    <script>
+      setTimeout(function () {
+        $("#notice-alert, #alert-alert").fadeOut("slow");
+      }, 1800);
+    </script>
+  </body>
+</html>

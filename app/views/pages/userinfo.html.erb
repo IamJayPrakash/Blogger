@@ -1,0 +1,24 @@
+<br />
+<div class="container glass1 table-responsive">
+  <br />
+  <table
+    class="table table-striped-columns table-hover table-bordered table align-middle border-5 border-dark"
+  >
+    <Thead class="text-center bg-info text-white">
+      <th>User Emails</th>
+      <th class="text-white">User Names</th>
+      <th class="text-white">View</th>
+    </Thead>
+
+    <tbody class="table-group-divider">
+      <% User.all.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td class="text-center"><%= link_to 'view',user,style:"text-decoration: none; ",class: "btn"%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br />

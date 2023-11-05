@@ -1,0 +1,12 @@
+<% if post.errors.any?%>
+    <ul class="glass2">
+        <% post.errors.full_messages.each do |message| %>
+            <li class="text-center text-danger"%>
+                <%= message %>
+
+            </li>
+            <% end %>
+
+    </ul>
+<% end %>
+

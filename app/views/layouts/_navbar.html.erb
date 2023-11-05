@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary",id="comehere">
+  <div class="container-fluid">
+    <%# <a class="navbar-brand" href="#">Rails Blog APP</a> %>  <span><i class="fa-solid fa-feather  bogl1 fa-2xl" style="color: #26c9be;">  </i></span>
+    <%= link_to '       Blogger  ', root_path,class:'navbar-brand fa-regular fa-2xl bogl'%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <%= link_to ' Home', root_path,class:'nav-link fa-solid fa-house'%>
+          <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
+        </li>
+        <li class="nav-item">
+          <%# <a class="nav-link" href="#">About</a> %>
+          <%= link_to ' About', about_path,class:'nav-link fa-solid fa-pager'%>
+        </li>
+        <li class="nav-item">
+            <%= link_to ' See Blogs' ,posts_path, class:'nav-link fa-solid fa-eye' %>
+        </li>
+      </ul>
+      <ul class="navbar nav">
+        <%=render 'layouts/notifications' %>
+        <%= render 'user/session_manager' %>
+        </ul>
+  
+    </div>
+  </div>
+</nav>

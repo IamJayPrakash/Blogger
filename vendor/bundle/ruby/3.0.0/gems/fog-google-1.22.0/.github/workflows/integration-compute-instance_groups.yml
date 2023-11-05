@@ -1,0 +1,46 @@
+# SQL tests are carried own in its' own job as they're extremely heavy so there
+# is no need to run them if SQL code or deps haven't changed and you cannot
+# trigger jobs based on file changes in the same workflow.
+# See: https://github.com/actions/runner/issues/456
+name: integration-tests-compute-instance_groups
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    types: [ assigned, opened, synchronize, reopened, labeled ]
+    # Only run SQL integration tests if SQL code or deps have changed
+    paths:
+      # Module-specific paths
+      - 'lib/fog/compute/**'
+      - 'test/integration/compute/instance_groups/**'
+      # Common deps & shared paths
+      - 'fog-google.gemspec'
+      - 'lib/fog/bin/google.rb'
+      - 'lib/fog/google/shared.rb'
+      - 'lib/fog/google.rb'
+      # Trigger workflow on version upgrade
+      - 'lib/fog/google/version.rb'
+
+jobs:
+  test:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        ruby-version: [ '2.7', '3.0', '3.1' ]
+      # Integration tests from the same task cannot run in parallel yet due to cleanup
+      max-parallel: 1
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Run tests
+        run: >-
+          ./.github/scripts/setup_creds.sh &&
+          bundle exec rake test:compute-instance_groups
+

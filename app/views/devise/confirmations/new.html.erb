@@ -1,0 +1,23 @@
+     <br><br>
+    <div class="container card text-center mb-5 g-5">
+     <br>
+     <div class="card-header">
+     <h2>Resend confirmation instructions</h2></div>
+<br>
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+       
+<br>
+        <div class="field">
+      <br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),placeholder:"Enter your Email here",class:"form-control"%>
+        </div>
+<br>
+        <div class="actions">
+          <%= f.submit "Resend confirmation instructions" ,class:"btn btn-dark "%>
+        </div>
+      <% end %>
+<br><hr><div class="container text-center">
+      <%= render "devise/shared/links" %>
+    <br></div>
+
+    </div>

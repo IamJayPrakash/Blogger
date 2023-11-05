@@ -1,0 +1,12 @@
+<!-- app/views/posts/show.html.erb -->
+
+<div class="jumbotron">
+  <h1 class="display-3"><%= @post.title %></h1>
+</div>
+<% if @post.image? %>
+  <div class="image_wrapper">
+    <%= image_tag(@post.image.url, alt: 'Image') %>
+  </div>
+<% end %>
+<p><%= raw @post.body %></p>
+<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary btn-lg' %>

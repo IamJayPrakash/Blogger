@@ -1,0 +1,34 @@
+
+
+<div id="<%= dom_id post %>">
+
+<div class="container">
+<div class=" card text-center p-3 mb-2 bg-light-subtle text-emphasis-info border-success glass1">
+  <p style="text-align:left;font-size:1.6rem;">
+    <strong class="intro", style="font-size:1.5rem">Title:  </strong>
+    <%= post.title %>
+
+  </p>
+
+  <div style="text-align:left;font-size:1.3rem">    
+  <strong class="intro", style="font-size:1.5rem">Body:   </strong>
+    <%= post.body %>
+  </div>
+  <br>
+  
+  <p ><h6 class="fa fa-solid"><i class="fa-solid fa-users"></i> <%= pluralize(post.view,"view") %></h6></p>
+  <p> <h6 class="fa fa-solid"> <i class="fa-solid fa-user-secret  " style="color: #1f5145"></i> Posted by:
+    
+    <% if post.user.userimage.present? %>
+          <%= image_tag (post.user.userimage.url), class:" img-fluid",style:"height:50px;width:50px; border-radius:100%"%>
+
+        <% else %>
+          <%= image_tag "default_image.jpg" ,class:"img-fluid",style:"height:50px;width:50px; border-radius:100%"%>   
+        <%end%>
+    <%= link_to post.user.name,user_path(post.user) %></h6>
+    </p>
+    <p class="fa fa-solid fa-clock"> Creation Date :  <%=
+      time_ago_in_words(post.created_at)%> </p>
+</div>
+</div>
+</div>

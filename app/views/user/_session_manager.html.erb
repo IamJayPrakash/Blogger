@@ -1,0 +1,49 @@
+<!-- <form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search Post"  aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">🔍</button>
+</form> -->
+
+
+<% if current_user%>
+    
+          <span>
+            <%= link_to 'Upgrade Now! 👑',mypricing_path,  class:"btn btn-info fa-regular fa-dollar " %>
+          </span>
+            <% if current_user.userimage.present? %>
+              <%= image_tag current_user.userimage.url, class:"img-thumbnail  img-fluid",style:"height:60px;width:60px; border-radius:100%"%>
+              <!-- <span class=" translate-top badge rounded-pill bg-primary"></span> -->
+            <% else %>
+               <%= image_tag "default_image.jpg" ,class:"img-thumbnail  img-fluid",style:"height:60px;width:60px; border-radius:100%"%>   
+            <%end%>
+
+    <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <%= current_user.name%>    <ion-icon name="apps-outline"></ion-icon>
+          </a>
+          <ul class=" dropdown-menu dropdown-menu-lg-end">
+            <% if current_user && (can? :create ,Post)%>
+               <li><%= link_to "  Create New Post" ,new_post_path,class:"dropdown-item fa-solid fa-file-pen" %> </li><br>
+
+            <%end%>
+              <li><%= link_to "  View Profile" ,userinformation_path,class:"dropdown-item fa-solid fa-user" %></li><br>
+              
+            
+           <li><%= button_to '    Billing Portal', stripe_billing_portal_path,class: "dropdown-item  btn fa fa-solid fa-file-invoice",data:{turbo:'false'} %></li><br> 
+            <li><%= link_to "  Edit Account" ,edit_user_registration_path ,class:"dropdown-item fa-solid fa-user-pen" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= button_to "  Sign Out" ,destroy_user_session_path ,method: :delete ,class:"dropdown-item  fa-solid fa-arrow-right-to-bracket",data:{turbo:'false'} %> </li>
+            
+            
+          </ul>
+    </li>
+<%else%>
+    <li class="nav-item">
+            <%= link_to 'Sign Up', new_user_registration_path,class:'nav-link'%>
+          <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
+    </li>
+    <li class="nav-item">
+          <%# <a class="nav-link" href="#">About</a> %>
+          <%= link_to 'Login ', new_user_session_path,class:'nav-link'%>
+    </li>
+
+<%end%>

@@ -1,0 +1,31 @@
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/ovirt-engine-sdk-4.4.1/ext/ovirtsdk4c
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230915-38903-rutpks.rb extconf.rb
+checking for xml2-config... no
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/bin/$(RUBY_BASE_NAME)3.0
+	--with-libxml2-config
+	--without-libxml2-config
+	--with-pkg-config
+	--without-pkg-config
+extconf.rb:29:in `<main>': The "libxml2" package isn't available. (RuntimeError)
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/extensions/x86_64-linux/3.0.0/ovirt-engine-sdk-4.4.1/mkmf.log
+
+extconf failed, exit code 1

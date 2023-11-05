@@ -1,0 +1,87 @@
+<br /><br />
+
+<div class="container card mb-10">
+  <br />
+  <div class="card border-danger mb-3">
+    <br />
+    <br />
+
+    <% if @user.userimage.present? %>
+    <div class="text-center">
+      <%= image_tag (@user.userimage.url) ,alt: 'User Image' ,class:"
+      img-thumbnail img-fluid",style:"height:300px;width:300px;
+      border-radius:100%"%>
+      <p>
+        <em><b>Profile Image</b></em>
+      </p>
+    </div>
+    <% else %>
+    <div class="text-center">
+      <%= image_tag "default_image.jpg" ,class:" img-thumbnail
+      img-fluid",style:"height:300px;width:300px; border-radius:100%"%>
+      <p>
+        <em><b>Default Profile Image</b></em>
+      </p>
+    </div>
+
+    <%end%>
+    <div class="container mb-10">
+      <table>
+        <br />
+        <tr>
+          <td>
+            <h2 style="color: rgb(3, 37, 4)">🔹User Name:</h2>
+          </td>
+          <td>
+            <h3 style="color: rgb(76, 192, 82)"><%= @user.name %></h3>
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <td>
+            <h2 style="color: rgb(1, 26, 2)">🔹User Email:</h2>
+          </td>
+          <td>
+            <h3 style="color: rgb(84, 217, 89)"><%=@user.email%></h3>
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <td>
+            <h4 style="color: rgb(1, 26, 2)">
+              🔹 Number of views on "<b><%=@user.name%></b>"Profile:
+            </h4>
+          </td>
+          <td>
+            <h3 style="color: rgb(84, 217, 89)">
+              <%= pluralize(@user.views,"view" )%>
+            </h3>
+          </td>
+        </tr>
+
+        <br />
+        <!-- <h3>
+          <tr>
+            <td>
+         <p>   <br><em><%=@user.name%></em> <%= " have added
+              #{@user.comments.where(post_id: @post_id).count} comment(s) on
+              this post." %></p>
+            </td>
+          </tr>
+        </h3> -->
+        <tr>
+          <td>
+            <!-- <h4><b>Stripe customer id: </b></h4> </td><td><%= @user.stripe_customer_id %> -->
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+    <%= link_to " Back to posts" , posts_path , class:"btn btn-lg
+    btn-outline-warning fa-solid fa-backward" %>
+    <br />
+    <br />
+  </div>
+</div>
+<br />

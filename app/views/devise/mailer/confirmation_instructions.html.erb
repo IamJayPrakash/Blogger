@@ -1,0 +1,13 @@
+<h1> <b><em>Blogger App </em></b>
+</h1>
+
+<p>Welcome <%=@user.name%>
+ Email: <p><%= @email %>!</p>
+<br>
+<p>You can confirm your account email through the link below:</p>
+<br>
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) ,class:"btn btn-info btn-lg"%></p>
+
+<p><b>Regards</b></p>
+<p><b>Team Blogger</b></p>
+<p><em><b>Email us: </b> </em>jay.prakash@ksolves.conm</p>

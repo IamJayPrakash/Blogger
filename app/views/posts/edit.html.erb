@@ -1,0 +1,23 @@
+
+<div class=" makeme card text-center p-3 mb-2 bg-info-subtle text-emphasis-info border-info " >
+<div class="container glass4 ">
+  <br>
+<div class ="card-header">
+<h1> <i class="fa-solid fa-pen-to-square fa-xl" style="color: #10f;"></i> Editing post</h1>
+</div>
+<br>
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "  Show this post", @post  ,class: "btn btn-lg btn-outline-secondary fa-regular fa-eye "%> | |
+  <%= link_to "  Back to posts", posts_path ,class: "btn btn-lg btn-outline-primary fa-solid fa-backward" %>
+  <br>
+  <br>
+  <%= button_to "  Delete this post", post_path(@post), method: :delete ,remote: true, data: {turbo_confirm: "Are you sure you want to delete??"},class:"btn btn-lg btn-outline-danger fa-solid fa-trash"%>
+
+</div>
+<br>
+</div>
+</div>

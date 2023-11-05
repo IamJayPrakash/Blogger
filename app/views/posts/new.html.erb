@@ -1,0 +1,16 @@
+<div class=" makeme card text-center p-3 mb-2 bg-primary-subtle text-emphasis-info border-info ">
+
+<div class="container">
+<div class ="card-header">
+<h1> <i class="fa-solid fa-feather-alt " style="color: #328f95;"></i> New Post</h1>
+</div>
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "  Back to posts", posts_path,class:"btn btn-lg btn-outline-secondary fa-solid fa-backward" %>
+</div>
+
+</div>
+</div>

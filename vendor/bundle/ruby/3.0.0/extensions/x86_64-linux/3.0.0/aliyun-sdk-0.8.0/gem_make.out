@@ -1,0 +1,16 @@
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/aliyun-sdk-0.8.0/ext/crcx
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230915-38659-fw09rx.rb extconf.rb
+creating Makefile
+
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/aliyun-sdk-0.8.0/ext/crcx
+make DESTDIR\= clean
+
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/aliyun-sdk-0.8.0/ext/crcx
+make DESTDIR\=
+compiling crc64_ecma.c
+compiling crcx.c
+linking shared-object aliyun/crcx.so
+
+current directory: /home/jayksi157/blogdemo/vendor/bundle/ruby/3.0.0/gems/aliyun-sdk-0.8.0/ext/crcx
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 crcx.so ./.gem.20230915-38659-xpangj/aliyun

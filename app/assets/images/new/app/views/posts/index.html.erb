@@ -1,0 +1,17 @@
+<!-- app/views/posts/index.html.erb -->
+
+<div class="jumbotron">
+  <h1 class="display-3">Posts</h1>
+  <%= link_to 'Add post', new_post_path, class: "btn btn-primary btn-lg" %>
+</div>
+<div class="posts-grid">
+  <% @rows.each do |row| %>
+    <div class="row">
+    <% row.each do |post| %>
+      <div class="col-md-4 col-sm-12">
+        <%= render 'post', post: post %>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+</div>

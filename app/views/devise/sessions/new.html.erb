@@ -1,0 +1,47 @@
+
+<div class=" makeme card text-center p-3 mb-2  text-emphasis-info border-primary">
+<div class="container">
+  <div class ="card-header">
+<h2> <i class="fa-solid fa-id-card fa-xl" style="color: #28d79d;"></i> Log into your account</h2>
+</div>
+<br>
+
+<br>
+<div class="form-floating mb-3">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+ 
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"Email-ID*" %>
+  </div>
+<br>
+  <div class="field">
+
+    <%= f.password_field :password, autocomplete: "current-password" , class:"form-control",placeholder:"Current Password*"%>
+  </div>
+<br>
+  <% if devise_mapping.rememberable? %>
+    <div class="field ",style="text-align:left;">
+    
+      <%= f.check_box :remember_me ,style: "transform: scale(1.8);"%>  
+      <%= f.label :remember_me ,style:"color:#06038D;"%>
+     
+    </div>
+  <% end %>
+<br>
+
+<div class="actions d-grid gap-2">
+
+    <%= f.submit "Log in"  ,class: "btn fa-solid text-center btn-outline-info " %>
+ 
+  </div>
+<% end %>
+<br>
+<div class="d-grid btn-group gap-2 d-flex align-items-center text-center justify-content-center">
+<%= button_to "  Sign up with Facebook", user_facebook_omniauth_authorize_path , class:"btn btn-primary fa fa-solid fa-facebook", data: { turbo: false }%>
+<%= button_to "  Sign up with Google", user_google_oauth2_omniauth_authorize_path , data: { turbo: false },class:"btn btn-outline-dark fa fa-solid fa-google"%>
+</div>
+<br><hr>
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
